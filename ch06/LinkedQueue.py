@@ -8,22 +8,26 @@ class Node:
 # 코드 6.6: 원형으로 연결된 큐 클래스
 class LinkedQueue:
     def __init__( self ):
-        self.tail = None
+        self.tail = None #Iinkedlist의 처음 노드 위치 == head
+        # self.link = None 
+        # 마지막 노드 위치를 별도로 관리하지 않으면, 성능에 문제 생김
+        # 추가( )
 
     def isEmpty( self ): return self.tail == None
     def isFull( self ): return False
 
     def enqueue( self, item ):
+        # 처음 노드인가? 아닌가?
         node = Node(item, None)
-        if self.isEmpty() :
-           self.tail = node
-           node.link = node
-        else :
+        if self.isEmpty() : # 처음 노드
+           self.tail = node  
+           node.link = node # Iinkedlist의 마지막 노드
+        else :              # 이후 노드 
             node.link = self.tail.link
             self.tail.link = node
             self.tail = node
 
-    def dequeue( self ):
+    def dequeue( self ): # 첫번째 삭제
         if not self.isEmpty():
             data = self.tail.link.data
             if self.tail.link == self.tail : self.tail = None
