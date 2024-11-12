@@ -4,6 +4,7 @@ class Node:
         self.data = elem 
         self.link = link
 
+# from Node import Node
 # 코드 6.2: 연결된 스택 클래스
 class LinkedStack :
     def __init__( self ):
